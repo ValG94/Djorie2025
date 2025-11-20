@@ -10,7 +10,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/djorie polo blanc.jpeg"
+            src="/Djorie costume bleu.jpeg"
             alt="Dr Serge Ghislain Djorie"
             className="w-full h-full object-cover object-[center_20%]"
 
