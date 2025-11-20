@@ -12,7 +12,7 @@ export default function Home() {
           <img
             src="/Djorie costume bleu.jpeg"
             alt="Dr Serge Ghislain Djorie"
-            className="w-full h-full object-cover object-[center_20%]"
+            className="w-full h-full object-cover"
 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-red-900/90" />
