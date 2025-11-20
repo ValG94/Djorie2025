@@ -61,7 +61,7 @@ export default function Program() {
       <section className="relative h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/programme + slogan.jpeg"
+            src="/lheure a sonne.jpeg"
             alt="Programme Électoral 2025"
             className="w-full h-full object-cover object-center"
           />
@@ -132,7 +132,7 @@ export default function Program() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/lheure a sonne.jpeg"
+                src="/programme + slogan.jpeg"
                 alt="Dr Serge Ghislain Djorie"
                 className="w-full h-full object-cover"
               />
