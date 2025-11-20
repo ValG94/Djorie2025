@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "biography": "Biographie",
+    "vision": "Vision",
+    "program": "Programme",
+    "youth": "Jeunesse",
+    "news": "Actualités",
+    "videos": "Vidéos",
+    "citizen": "Espace Citoyen",
+    "donate": "Faire un don",
+    "contact": "Contact",
+    "admin": "Administration"
+  },
+  "home": {
+    "hero": {
+      "title": "Dr Serge Ghislain Djorie",
+      "subtitle": "Candidat à la Présidentielle 2025",
+      "slogan1": "L'heure a sonné",
+      "slogan2": "Une nouvelle génération au service de la nation",
+      "slogan3": "Bâtir une nouvelle Centrafrique — OUI ! NOUS SOMMES CAPABLES",
+      "cta1": "Rejoindre le mouvement",
+      "cta2": "Faire un don",
+      "cta3": "Découvrir sa vision"
+    },
+    "about": {
+      "title": "Un leader pour la nouvelle Centrafrique",
+      "description": "Chercheur en médecine, ancien officier des Forces armées centrafricaines, ancien ministre de la Communication et des Médias, Porte-parole du Gouvernement, et Président du CAPNCA."
+    },
+    "stats": {
+      "security": "Sécurité restaurée",
+      "justice": "Justice renforcée",
+      "economy": "Économie relancée",
+      "education": "Jeunesse formée"
+    }
+  },
+  "biography": {
+    "title": "Biographie & Trajectoire",
+    "subtitle": "Un parcours exceptionnel au service de la nation",
+    "researcher": {
+      "title": "Chercheur en médecine",
+      "description": "Expert reconnu dans le domaine médical avec une contribution significative à la recherche scientifique."
+    },
+    "military": {
+      "title": "Ancien officier des Forces armées",
+      "description": "Service distingué au sein des Forces armées centrafricaines, avec un engagement total pour la sécurité nationale."
+    },
+    "minister": {
+      "title": "Ancien Ministre",
+      "description": "Ministre de la Communication et des Médias, Porte-parole du Gouvernement, avec une vision moderne de la gouvernance."
+    },
+    "president": {
+      "title": "Président du CAPNCA",
+      "description": "Fondateur et leader du Collectif pour l'Alternance Politique pour une Nouvelle Centrafrique."
+    }
+  },
+  "vision": {
+    "title": "Vision & Panafricanisme",
+    "subtitle": "Une vision moderne pour une Centrafrique souveraine",
+    "intro": "Le Dr Djorie porte une vision panafricaniste résolument tournée vers l'avenir, fondée sur la coopération régionale, la souveraineté et la valorisation des compétences africaines.",
+    "cooperation": {
+      "title": "Coopération sous-régionale",
+      "description": "Renforcer les liens économiques et sécuritaires avec les pays voisins pour une stabilité durable."
+    },
+    "sovereignty": {
+      "title": "Souveraineté renforcée",
+      "description": "Restaurer l'autorité de l'État sur l'ensemble du territoire et affirmer notre indépendance."
+    },
+    "excellence": {
+      "title": "Valorisation des compétences",
+      "description": "Investir dans la recherche, la santé et les technologies pour développer nos talents locaux."
+    },
+    "leadership": {
+      "title": "Leadership africain",
+      "description": "Un leadership fondé sur la stabilité institutionnelle et la gouvernance transparente."
+    }
+  },
+  "program": {
+    "title": "Programme & Projet de société",
+    "subtitle": "Six priorités pour transformer la Centrafrique",
+    "vision": "Une Centrafrique du 21ᵉ siècle, digne, stable et souveraine",
+    "learnMore": "En savoir plus"
+  },
+  "youth": {
+    "title": "Jeunesse & Année zéro du changement",
+    "subtitle": "L'avenir de la Centrafrique appartient à sa jeunesse",
+    "intro": "Plus de 60 % de la population centrafricaine a moins de 25 ans. C'est cette jeunesse qui bâtira la nouvelle Centrafrique.",
+    "yearZero": {
+      "title": "Année zéro du changement",
+      "description": "2025 marque le début d'une nouvelle ère. Nous rompons avec la résignation et embrassons notre potentiel."
+    },
+    "potential": {
+      "title": "Potentiel humain et naturel",
+      "description": "Notre pays regorge de richesses naturelles et de talents inexploités. Il est temps de les valoriser."
+    },
+    "engagement": {
+      "title": "Engagement de la jeunesse",
+      "description": "Les jeunes doivent être au cœur du processus de transformation, acteurs et bénéficiaires du changement."
+    },
+    "cta": "Rejoignez le mouvement"
+  },
+  "news": {
+    "title": "Actualités & Communiqués",
+    "subtitle": "Suivez la campagne et les dernières actualités",
+    "categories": {
+      "all": "Toutes",
+      "Campagne": "Campagne",
+      "Programmes": "Programmes",
+      "Déclarations": "Déclarations",
+      "Médiation": "Médiation",
+      "Paix 2020": "Paix 2020",
+      "Autre": "Autre"
+    },
+    "readMore": "Lire la suite",
+    "publishedOn": "Publié le",
+    "noArticles": "Aucun article disponible"
+  },
+  "videos": {
+    "title": "Discours & Vidéos",
+    "subtitle": "Regardez les interventions et discours du Dr Djorie",
+    "filters": {
+      "all": "Toutes",
+      "recent": "Récentes",
+      "popular": "Populaires"
+    },
+    "tags": {
+      "security": "Sécurité",
+      "youth": "Jeunesse",
+      "economy": "Économie",
+      "panafrican": "Panafricanisme",
+      "education": "Éducation"
+    },
+    "duration": "Durée",
+    "location": "Lieu",
+    "date": "Date",
+    "noVideos": "Aucune vidéo disponible"
+  },
+  "citizen": {
+    "title": "Espace Citoyen",
+    "subtitle": "Votre voix compte. Partagez vos messages, doléances, idées et questions.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone (optionnel)",
+      "type": "Type de message",
+      "types": {
+        "support": "Message de soutien",
+        "grievance": "Doléance",
+        "idea": "Idée/Proposition",
+        "question": "Question"
+      },
+      "subject": "Sujet",
+      "message": "Votre message",
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours...",
+      "success": "Merci pour votre message ! Nous l'avons bien reçu.",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "testimonials": {
+      "title": "Messages de soutien",
+      "subtitle": "Découvrez les messages des citoyens"
+    }
+  },
+  "donate": {
+    "title": "Faire un don",
+    "subtitle": "Soutenez la campagne pour bâtir une nouvelle Centrafrique",
+    "form": {
+      "name": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "amount": "Montant (XAF)",
+      "paymentMethod": "Méthode de paiement",
+      "methods": {
+        "card": "Carte bancaire",
+        "mobile_money": "Mobile Money",
+        "bank_transfer": "Virement bancaire"
+      },
+      "provider": "Opérateur",
+      "providers": {
+        "orange_money": "Orange Money",
+        "moov_money": "Moov Money"
+      },
+      "anonymous": "Don anonyme",
+      "message": "Message (optionnel)",
+      "submit": "Faire un don",
+      "submitting": "Traitement...",
+      "success": "Merci pour votre généreuse contribution !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "info": {
+      "title": "Informations bancaires",
+      "subtitle": "Pour effectuer un virement bancaire",
+      "bank": "Banque",
+      "account": "Numéro de compte",
+      "swift": "Code SWIFT",
+      "reference": "Référence"
+    }
+  },
+  "newsletter": {
+    "title": "Restez informé",
+    "subtitle": "Inscrivez-vous à notre newsletter pour recevoir les dernières actualités",
+    "form": {
+      "email": "Votre email",
+      "name": "Votre nom (optionnel)",
+      "subscribe": "S'abonner",
+      "subscribing": "Inscription...",
+      "success": "Merci ! Vérifiez votre email pour confirmer votre inscription.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "alreadySubscribed": "Vous êtes déjà inscrit à notre newsletter."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Entrez en contact avec l'équipe de campagne",
+    "social": {
+      "title": "Réseaux sociaux",
+      "subtitle": "Suivez-nous sur les réseaux sociaux"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse"
+    }
+  },
+  "footer": {
+    "slogan": "L'heure a sonné",
+    "copyright": "© 2025 Dr Serge Ghislain Djorie. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "quickLinks": "Liens rapides",
+    "followUs": "Suivez-nous"
+  },
+  "common": {
+    "readMore": "Lire la suite",
+    "learnMore": "En savoir plus",
+    "backToHome": "Retour à l'accueil",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "noResults": "Aucun résultat",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tout",
+    "required": "Requis",
+    "optional": "Optionnel"
+  }
+}
