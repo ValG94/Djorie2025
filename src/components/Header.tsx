@@ -13,6 +13,7 @@ export default function Header() {
     { name: t('nav.biography'), href: '/biography' },
     { name: t('nav.vision'), href: '/vision' },
     { name: t('nav.program'), href: '/program' },
+    { name: t('nav.professionDeFoi'), href: '/profession-de-foi' },
     { name: t('nav.youth'), href: '/youth' },
     { name: t('nav.news'), href: '/news' },
     { name: t('nav.videos'), href: '/videos' },
@@ -22,7 +23,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-[1400px] mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-3">
             <img
@@ -36,19 +37,19 @@ export default function Header() {
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-5">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-xs xl:text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap"
               >
                 {item.name}
               </Link>
             ))}
             <Link
               to="/donate"
-              className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all"
+              className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-4 xl:px-6 py-2 rounded-full text-xs xl:text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap"
             >
               {t('nav.donate')}
             </Link>
