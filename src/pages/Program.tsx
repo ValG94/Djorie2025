@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Shield,
@@ -20,6 +20,18 @@ import {
 export default function Program() {
   const { t } = useTranslation();
   const [selectedPillar, setSelectedPillar] = useState<number | null>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
+
+  const handlePillarClick = (pillarId: number) => {
+    if (selectedPillar === pillarId) {
+      setSelectedPillar(null);
+    } else {
+      setSelectedPillar(pillarId);
+      setTimeout(() => {
+        detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+  };
 
   const programPillars = [
     {
@@ -166,7 +178,7 @@ export default function Program() {
             {programPillars.map((pillar, index) => (
               <div
                 key={pillar.id}
-                onClick={() => setSelectedPillar(selectedPillar === pillar.id ? null : pillar.id)}
+                onClick={() => handlePillarClick(pillar.id)}
                 className={`relative group cursor-pointer transform transition-all duration-500 hover:scale-105 ${
                   selectedPillar === pillar.id ? 'scale-105 ring-4 ring-offset-2' : ''
                 } ${pillar.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-2xl`}
@@ -207,7 +219,7 @@ export default function Program() {
 
           {/* Section détails du pilier sélectionné */}
           {selectedPillar && (
-            <div className="mt-8 animate-fadeIn">
+            <div ref={detailsRef} className="mt-12 pt-8 animate-fadeIn scroll-mt-20">
               {programPillars.filter(p => p.id === selectedPillar).map((pillar, index) => (
                 <div
                   key={pillar.id}
