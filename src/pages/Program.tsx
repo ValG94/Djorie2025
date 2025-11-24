@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Shield,
@@ -14,13 +14,24 @@ import {
   ChevronRight,
   CheckCircle2,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  ArrowUp
 } from 'lucide-react';
 
 export default function Program() {
   const { t } = useTranslation();
   const [selectedPillar, setSelectedPillar] = useState<number | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const detailsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handlePillarClick = (pillarId: number) => {
     if (selectedPillar === pillarId) {
@@ -31,6 +42,10 @@ export default function Program() {
         detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 200);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const programPillars = [
@@ -330,6 +345,17 @@ export default function Program() {
           </div>
         </div>
       </section>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-50 bg-gradient-to-r from-blue-600 to-green-600 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transform transition-all duration-300 hover:scale-110 ${
+          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
+        }`}
+        aria-label="Retour en haut"
+      >
+        <ArrowUp size={24} className="animate-bounce" />
+      </button>
     </div>
   );
 }
