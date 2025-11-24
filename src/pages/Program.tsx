@@ -1,21 +1,25 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  Shield, 
-  Eye, 
-  Globe, 
-  Heart, 
-  Building2, 
-  DollarSign, 
-  Palette, 
-  Wheat, 
-  Zap, 
+import {
+  Shield,
+  Eye,
+  Globe,
+  Heart,
+  Building2,
+  DollarSign,
+  Palette,
+  Wheat,
+  Zap,
   Scale,
   ChevronRight,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight,
+  Sparkles
 } from 'lucide-react';
 
 export default function Program() {
   const { t } = useTranslation();
+  const [selectedPillar, setSelectedPillar] = useState<number | null>(null);
 
   const programPillars = [
     {
@@ -142,67 +146,122 @@ export default function Program() {
       </section>
 
       {/* Les 10 Piliers */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              {t('program.pillars.title')}
-            </h2>
+            <div className="flex items-center justify-center mb-4">
+              <Sparkles className="text-yellow-500 mr-2" size={32} />
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                {t('program.pillars.title')}
+              </h2>
+              <Sparkles className="text-yellow-500 ml-2" size={32} />
+            </div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {t('program.pillars.subtitle')}
             </p>
           </div>
 
-          <div className="space-y-12">
+          {/* Grille de cartes modernes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {programPillars.map((pillar, index) => (
               <div
                 key={pillar.id}
-                className={`${pillar.bgColor} rounded-3xl p-8 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-300`}
+                onClick={() => setSelectedPillar(selectedPillar === pillar.id ? null : pillar.id)}
+                className={`relative group cursor-pointer transform transition-all duration-500 hover:scale-105 ${
+                  selectedPillar === pillar.id ? 'scale-105 ring-4 ring-offset-2' : ''
+                } ${pillar.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-2xl`}
+                style={selectedPillar === pillar.id ? { ringColor: pillar.iconBg.replace('bg-', '') } : {}}
               >
-                <div className="flex flex-col md:flex-row md:items-start md:space-x-8">
-                  {/* Icône et numéro */}
-                  <div className="flex-shrink-0 mb-6 md:mb-0">
-                    <div className="relative">
-                      <div className={`${pillar.iconBg} w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg`}>
-                        <pillar.icon size={40} className="text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-gray-900 shadow-md">
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-                    </div>
+                {/* Badge numéro */}
+                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-br from-white to-gray-100 shadow-lg flex items-center justify-center">
+                  <span className="text-lg font-bold text-gray-900">{String(index + 1).padStart(2, '0')}</span>
+                </div>
+
+                {/* Icône avec effet */}
+                <div className="mb-4">
+                  <div className={`inline-flex ${pillar.iconBg} w-16 h-16 rounded-xl items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    <pillar.icon size={32} className="text-white" />
                   </div>
+                </div>
 
-                  {/* Contenu */}
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-3">
-                      {t(`program.${pillar.key}.title`)}
-                    </h3>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                      {t(`program.${pillar.key}.subtitle`)}
-                    </p>
+                {/* Titre */}
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                  {t(`program.${pillar.key}.title`)}
+                </h3>
 
-                    {/* Points clés */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {[1, 2, 3, 4, 5, 6].map((pointIndex) => {
-                        const pointKey = `program.${pillar.key}.point${pointIndex}`;
-                        const pointText = t(pointKey);
-                        
-                        // Ne pas afficher si la traduction n'existe pas
-                        if (pointText === pointKey) return null;
+                {/* Extrait */}
+                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                  {t(`program.${pillar.key}.subtitle`)}
+                </p>
 
-                        return (
-                          <div key={pointIndex} className="flex items-start space-x-3">
-                            <CheckCircle2 size={20} className={`flex-shrink-0 mt-1 text-${pillar.iconBg.replace('bg-', '')}`} />
-                            <p className="text-gray-700 leading-relaxed">{pointText}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+                {/* Indicateur d'expansion */}
+                <div className="flex items-center text-sm font-semibold text-gray-700 group-hover:text-gray-900">
+                  <span>{selectedPillar === pillar.id ? 'Voir moins' : 'En savoir plus'}</span>
+                  <ArrowRight size={16} className={`ml-2 transition-transform duration-300 ${
+                    selectedPillar === pillar.id ? 'rotate-90' : 'group-hover:translate-x-1'
+                  }`} />
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Section détails du pilier sélectionné */}
+          {selectedPillar && (
+            <div className="mt-8 animate-fadeIn">
+              {programPillars.filter(p => p.id === selectedPillar).map((pillar, index) => (
+                <div
+                  key={pillar.id}
+                  className={`${pillar.bgColor} rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-white`}
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:space-x-8">
+                    {/* Icône grande */}
+                    <div className="flex-shrink-0 mb-6 md:mb-0">
+                      <div className={`${pillar.iconBg} w-24 h-24 rounded-3xl flex items-center justify-center shadow-xl`}>
+                        <pillar.icon size={48} className="text-white" />
+                      </div>
+                    </div>
+
+                    {/* Contenu détaillé */}
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+                          {t(`program.${pillar.key}.title`)}
+                        </h3>
+                        <span className="text-5xl font-bold text-gray-300">
+                          {String(programPillars.findIndex(p => p.id === pillar.id) + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+
+                      <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                        {t(`program.${pillar.key}.subtitle`)}
+                      </p>
+
+                      {/* Points clés avec animation */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {[1, 2, 3, 4, 5, 6].map((pointIndex) => {
+                          const pointKey = `program.${pillar.key}.point${pointIndex}`;
+                          const pointText = t(pointKey);
+
+                          if (pointText === pointKey) return null;
+
+                          return (
+                            <div
+                              key={pointIndex}
+                              className="flex items-start space-x-3 p-3 bg-white/60 rounded-lg hover:bg-white/90 transition-all duration-200"
+                              style={{ animationDelay: `${pointIndex * 50}ms` }}
+                            >
+                              <CheckCircle2 size={20} className="flex-shrink-0 mt-1" style={{ color: pillar.iconBg.replace('bg-', '') }} />
+                              <p className="text-gray-700 leading-relaxed">{pointText}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
