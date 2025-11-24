@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const { t } = useTranslation();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
@@ -38,15 +39,25 @@ export default function Header() {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-5">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="text-xs xl:text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`text-xs xl:text-sm font-medium transition-all whitespace-nowrap relative ${
+                    isActive
+                      ? 'text-blue-600 font-bold'
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                >
+                  {item.name}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-red-600 rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
             <Link
               to="/donate"
               className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-4 xl:px-6 py-2 rounded-full text-xs xl:text-sm font-semibold hover:shadow-lg transition-all whitespace-nowrap"
@@ -70,16 +81,23 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors py-2"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-sm font-medium transition-all py-2 px-3 rounded-lg ${
+                      isActive
+                        ? 'text-blue-600 font-bold bg-blue-50 border-l-4 border-blue-600'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <Link
                 to="/donate"
                 onClick={() => setIsMenuOpen(false)}
