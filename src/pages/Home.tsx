@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Scale, TrendingUp, GraduationCap } from 'lucide-react';
+import { ArrowRight, Shield, Scale, TrendingUp, GraduationCap, Sparkles } from 'lucide-react';
 import ScrollToTop from '../components/ScrollToTop.tsx';
 
 export default function Home() {
@@ -97,41 +97,88 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-red-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-red-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-500 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-yellow-400/20 px-6 py-2 rounded-full mb-6">
+              <Sparkles className="text-yellow-300" size={24} />
+              <span className="text-yellow-300 font-semibold text-lg">{t('home.hero.slogan1')}</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              {t('home.hero.slogan2')}
+            </h2>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              {t('home.hero.slogan3')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Shield, label: t('home.stats.security'), color: 'text-red-600' },
-              { icon: Scale, label: t('home.stats.justice'), color: 'text-blue-600' },
-              { icon: TrendingUp, label: t('home.stats.economy'), color: 'text-green-600' },
-              { icon: GraduationCap, label: t('home.stats.education'), color: 'text-yellow-600' },
+              { icon: Shield, label: t('home.stats.security'), color: 'from-red-500 to-red-600', bgColor: 'bg-red-500/10' },
+              { icon: Scale, label: t('home.stats.justice'), color: 'from-blue-500 to-blue-600', bgColor: 'bg-blue-500/10' },
+              { icon: TrendingUp, label: t('home.stats.economy'), color: 'from-green-500 to-green-600', bgColor: 'bg-green-500/10' },
+              { icon: GraduationCap, label: t('home.stats.education'), color: 'from-yellow-500 to-yellow-600', bgColor: 'bg-yellow-500/10' },
             ].map((stat, index) => (
-              <div
+              <Link
                 key={index}
-                className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow"
+                to="/program"
+                className="group bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-white/20 cursor-pointer"
               >
-                <stat.icon size={48} className={`mx-auto mb-4 ${stat.color}`} />
-                <p className="text-lg font-semibold text-gray-800">{stat.label}</p>
-              </div>
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 shadow-xl`}>
+                  <stat.icon size={40} className="text-white" />
+                </div>
+                <p className="text-xl font-bold text-white mb-2">{stat.label}</p>
+                <div className="flex items-center justify-center space-x-2 text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-sm">{t('common.learnMore')}</span>
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/program"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-900 px-10 py-4 rounded-full font-bold text-lg hover:from-yellow-300 hover:to-yellow-400 transition-all hover:scale-105 shadow-2xl"
+            >
+              <span>{t('nav.program')}</span>
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-red-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            {t('home.hero.slogan1')}
-          </h2>
-          <p className="text-xl mb-8 text-blue-100">
-            {t('home.hero.slogan2')}
-          </p>
-          <Link
-            to="/program"
-            className="inline-block bg-white text-blue-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-all hover:scale-105"
-          >
-            {t('nav.program')}
-          </Link>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-blue-900 via-red-900 to-blue-900 rounded-3xl p-12 text-center text-white shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              {t('home.hero.slogan1')}
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+              {t('home.hero.slogan2')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/vision"
+                className="inline-flex items-center justify-center space-x-2 bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-all hover:scale-105"
+              >
+                <span>{t('nav.vision')}</span>
+                <ArrowRight size={20} />
+              </Link>
+              <Link
+                to="/citizen"
+                className="inline-flex items-center justify-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-900 transition-all hover:scale-105"
+              >
+                <span>{t('home.hero.cta1')}</span>
+                <ArrowRight size={20} />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
       <ScrollToTop />
