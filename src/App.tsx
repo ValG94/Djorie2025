@@ -3,6 +3,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTopOnNavigate from './components/ScrollToTopOnNavigate';
 import Home from './pages/Home';
 import Biography from './pages/Biography';
 import Vision from './pages/Vision';
@@ -19,6 +20,7 @@ import AdminDashboard from './pages/AdminDashboard';
 function App() {
   return (
     <Router>
+      <ScrollToTopOnNavigate />
       <AuthProvider>
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
