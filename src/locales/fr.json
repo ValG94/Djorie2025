@@ -4,6 +4,7 @@
     "biography": "Biographie",
     "vision": "Vision",
     "program": "Programme",
+    "professionDeFoi": "Profession de Foi",
     "youth": "Jeunesse",
     "news": "Actualités",
     "videos": "Vidéos",
@@ -76,32 +77,202 @@
     }
   },
   "program": {
-    "title": "Programme & Projet de société",
-    "subtitle": "Six priorités pour transformer la Centrafrique",
-    "vision": "Une Centrafrique du 21ᵉ siècle, digne, stable et souveraine",
-    "learnMore": "En savoir plus"
+    "showMore": "En savoir plus",
+    "showLess": "Voir moins",
+    "hero": {
+      "title": "Programme & Projet de Société",
+      "subtitle": "10 Piliers pour Transformer la Centrafrique",
+      "description": "Un programme ambitieux, concret et réaliste pour bâtir une nation forte, prospère et souveraine"
+    },
+    "intro": {
+      "title": "Une Vision Globale pour la Renaissance Nationale",
+      "description": "Notre programme repose sur 10 piliers stratégiques qui couvrent tous les aspects de la vie nationale. De la sécurité à la justice, de l'éducation à l'énergie, chaque axe est pensé pour répondre aux défis actuels et construire l'avenir que nous méritons."
+    },
+    "pillars": {
+      "title": "Les 10 Piliers du Programme",
+      "subtitle": "Des engagements concrets pour une transformation profonde et durable"
+    },
+    "defense": {
+      "title": "Défense & Sécurité Nationale",
+      "subtitle": "Restaurer la souveraineté et protéger le territoire national",
+      "point1": "Construction de villes militaires stratégiques aux frontières pour sécuriser le territoire",
+      "point2": "Rééquipement complet des FACA, Police et Gendarmerie avec du matériel moderne",
+      "point3": "Réouverture des écoles militaires et centres de formation pour renforcer les capacités",
+      "point4": "Augmentation significative du budget de la Défense pour garantir l'efficacité opérationnelle",
+      "point5": "Création d'une base de données nationale d'identification sécurisée",
+      "point6": "Obligation d'identité pour tous les résidents sur le territoire national"
+    },
+    "security": {
+      "title": "Sécurité Intérieure & Renseignement Extérieur",
+      "subtitle": "Moderniser les services de sécurité et de renseignement",
+      "point1": "Identification systématique et contrôlée à l'entrée du territoire national",
+      "point2": "Modernisation complète des services de renseignement et de la Police nationale",
+      "point3": "Déclaration obligatoire des naissances et décès dans tout le pays",
+      "point4": "Mise en place d'une base de données sécurisée et centralisée",
+      "point5": "Renforcement de la coopération régionale et internationale en matière de sécurité",
+      "point6": "Formation continue des agents de sécurité aux techniques modernes"
+    },
+    "diplomacy": {
+      "title": "Diplomatie & Relations Extérieures",
+      "subtitle": "Affirmer la place de la Centrafrique sur la scène internationale",
+      "point1": "Révision stratégique de tous les accords bilatéraux et multilatéraux",
+      "point2": "Affectation des diplomates sur des critères stricts de compétence et de mérite",
+      "point3": "Création d'une Agence Nationale de la Diaspora pour mobiliser les compétences",
+      "point4": "Renforcement des partenariats avec les pays africains et les organisations régionales",
+      "point5": "Promotion de l'image de la Centrafrique à l'international",
+      "point6": "Développement de la coopération économique et culturelle"
+    },
+    "social": {
+      "title": "Politique Sociale, Éducation, Santé & Jeunesse",
+      "subtitle": "Investir dans le capital humain pour bâtir l'avenir",
+      "point1": "Mise en place de la Couverture Maladie Universelle (CMU) pour tous les citoyens",
+      "point2": "Réhabilitation complète des hôpitaux et centres de santé sur tout le territoire",
+      "point3": "Réhabilitation et construction d'écoles, collèges, lycées et universités modernes",
+      "point4": "Gratuité et obligation scolaire jusqu'à un âge défini pour garantir l'accès à l'éducation",
+      "point5": "Revalorisation des bourses d'études pour tous les jeunes sans exclusion",
+      "point6": "Création de centres de formation des jeunes dans toutes les préfectures"
+    },
+    "infrastructure": {
+      "title": "Infrastructures Publiques, Routes & Aménagement",
+      "subtitle": "Moderniser le pays et connecter les régions",
+      "point1": "Élaboration d'un Plan Architectural National pour un développement harmonieux",
+      "point2": "Réhabilitation et construction de routes, ponts et autoroutes modernes",
+      "point3": "Construction de chemins de fer : Bangui-Douala et Bangui-Khartoum",
+      "point4": "Création du Port Autonome de Mongoumba pour faciliter le commerce",
+      "point5": "Construction de centres administratifs modernes dans toutes les préfectures",
+      "point6": "Réhabilitation et construction d'aéroports internationaux"
+    },
+    "aid": {
+      "title": "Gestion des Aides Extérieures",
+      "subtitle": "Transparence et efficacité dans l'utilisation des ressources",
+      "point1": "Création d'un compte spécial BEAC dédié à la gestion des aides extérieures",
+      "point2": "Sécurisation juridique de tous les marchés publics et privés",
+      "point3": "Contrôle strict et suivi rigoureux de l'exécution des chantiers",
+      "point4": "Transparence totale dans la gestion des financements internationaux",
+      "point5": "Publication régulière des rapports d'utilisation des fonds",
+      "point6": "Lutte implacable contre la corruption et le détournement de fonds"
+    },
+    "culture": {
+      "title": "Culture, Arts, Communication & Médias Publics",
+      "subtitle": "Promouvoir l'identité culturelle et libérer la créativité",
+      "point1": "Construction de centres culturels et artisanaux dans toutes les préfectures",
+      "point2": "Érection d'une nouvelle Statue de la Paix et modernisation du Musée National",
+      "point3": "Modernisation complète des chaînes de radios et télévisions nationales",
+      "point4": "Création d'écoles de formation pour journalistes et techniciens des médias",
+      "point5": "Mise sur satellite des médias publics pour une couverture nationale",
+      "point6": "Soutien aux artistes, créateurs et acteurs culturels"
+    },
+    "agriculture": {
+      "title": "Agriculture & Élevage",
+      "subtitle": "Moderniser le secteur agricole et garantir la sécurité alimentaire",
+      "point1": "Mécanisation complète de l'agriculture pour augmenter la productivité",
+      "point2": "Industrialisation et conditionnement des produits agricoles pour l'export",
+      "point3": "Création d'écoles de formation agricole dans toutes les régions",
+      "point4": "Mise en place d'une Direction Nationale des Produits Agricoles",
+      "point5": "Développement de l'élevage moderne et des filières animales",
+      "point6": "Facilitation de l'accès au crédit et aux intrants pour les agriculteurs"
+    },
+    "energy": {
+      "title": "Politique Énergétique & Électrification",
+      "subtitle": "Éclairer tout le pays et exploiter nos ressources naturelles",
+      "point1": "Gestion responsable et transparente des ressources minières (diamant, or, etc.)",
+      "point2": "Développement massif de l'hydroélectrique, du photovoltaïque et de l'éolien",
+      "point3": "Électrification complète des villes et des zones rurales",
+      "point4": "Création d'écoles et centres de formation dans l'énergie et l'électricité",
+      "point5": "Exploitation rationnelle du pétrole et construction de raffineries nationales",
+      "point6": "Promotion des énergies renouvelables et de l'efficacité énergétique"
+    },
+    "justice": {
+      "title": "Justice & Presse",
+      "subtitle": "Garantir l'État de droit et la liberté d'expression",
+      "point1": "Garantie d'une Justice indépendante et impartiale pour tous",
+      "point2": "Reconnaissance de la Presse comme 4ᵉ pouvoir et garantie de sa liberté",
+      "point3": "Lutte implacable contre la corruption et l'impunité à tous les niveaux",
+      "point4": "Augmentation significative des budgets de la Justice et des Médias",
+      "point5": "Modernisation des tribunaux et formation continue des magistrats",
+      "point6": "Protection des journalistes et promotion du journalisme d'investigation"
+    },
+    "vision": {
+      "title": "Notre Vision pour la Centrafrique",
+      "description": "Une Centrafrique du 21ᵉ siècle, digne, stable et souveraine. Un pays où chaque citoyen peut vivre dans la sécurité, accéder à des services de qualité et contribuer au développement national.",
+      "point1": "Un leadership visionnaire au service du peuple et de la nation",
+      "point2": "Des solutions concrètes et réalistes pour les défis d'aujourd'hui",
+      "point3": "Une Centrafrique unie, prospère et respectée dans le monde",
+      "point4": "Une transformation profonde et durable pour les générations futures"
+    },
+    "cta": {
+      "title": "Notre Heure est Venue",
+      "description": "Ensemble, faisons l'histoire ! Rejoignez le mouvement pour bâtir la Centrafrique que nous méritons."
+    }
   },
   "youth": {
-    "title": "Jeunesse & Année zéro du changement",
-    "subtitle": "L'avenir de la Centrafrique appartient à sa jeunesse",
-    "intro": "Plus de 60 % de la population centrafricaine a moins de 25 ans. C'est cette jeunesse qui bâtira la nouvelle Centrafrique.",
-    "yearZero": {
-      "title": "Année zéro du changement",
-      "description": "2025 marque le début d'une nouvelle ère. Nous rompons avec la résignation et embrassons notre potentiel."
+    "hero": {
+      "title": "La Jeunesse au Cœur de Notre Projet",
+      "subtitle": "Plus de 60% de la population a moins de 25 ans",
+      "description": "Cette jeunesse n'est pas un problème, c'est notre plus grande richesse ! Elle sera au cœur de notre projet de transformation nationale."
     },
-    "potential": {
-      "title": "Potentiel humain et naturel",
-      "description": "Notre pays regorge de richesses naturelles et de talents inexploités. Il est temps de les valoriser."
+    "intro": {
+      "title": "Une Génération Qui Porte l'Avenir",
+      "description": "La jeunesse centrafricaine est talentueuse, créative et déterminée. Notre mission est de lui offrir les moyens de réussir : éducation de qualité, formation professionnelle, emplois dignes, santé accessible et espaces d'épanouissement culturel et sportif.",
+      "stat": "🎯 Plus de 60% de la population centrafricaine a moins de 25 ans — C'est notre plus grande force !"
     },
-    "engagement": {
-      "title": "Engagement de la jeunesse",
-      "description": "Les jeunes doivent être au cœur du processus de transformation, acteurs et bénéficiaires du changement."
+    "education": {
+      "title": "1. Éducation Moderne et Accessible pour Tous",
+      "subtitle": "Un système éducatif rénové, équipé et gratuit jusqu'à un certain niveau",
+      "point1": "Réhabilitation et modernisation de toutes les écoles, collèges et lycées sur l'ensemble du territoire national",
+      "point2": "Reconstruction et équipement complet des universités avec des infrastructures modernes, bibliothèques numériques et laboratoires",
+      "point3": "Gratuité et obligation scolaire jusqu'à un âge défini pour garantir l'accès à l'éducation pour tous les enfants",
+      "point4": "Bourses revalorées pour tous les jeunes sans exclusion, avec un système de mérite et d'équité sociale"
     },
-    "cta": "Rejoignez le mouvement"
+    "formation": {
+      "title": "2. Formation Professionnelle et Opportunités Futures",
+      "subtitle": "Des compétences adaptées aux besoins du 21ᵉ siècle et aux secteurs porteurs",
+      "point1": "Création de centres de formation des jeunes dans toutes les préfectures pour rapprocher la formation des populations",
+      "point2": "Formations techniques dans les secteurs clés : agriculture mécanisée, élevage moderne, énergie renouvelable, communication et sécurité",
+      "point3": "Mise à niveau technologique avec des formations aux métiers du numérique, des médias, du design et de l'innovation",
+      "point4": "Partenariats avec des institutions internationales pour des certifications reconnues et des échanges académiques"
+    },
+    "employment": {
+      "title": "3. Emploi des Jeunes & Entrepreneuriat",
+      "subtitle": "Faire de la jeunesse le moteur de la reconstruction et de la croissance économique",
+      "point1": "Intégration massive des jeunes dans les secteurs de reconstruction nationale : infrastructures, agriculture, énergie, industries locales",
+      "point2": "Création d'incubateurs et de pépinières d'entreprises dans toutes les régions avec accompagnement technique et financier",
+      "point3": "Accès facilité au financement pour les jeunes entrepreneurs via des fonds dédiés, des micro-crédits et des subventions",
+      "point4": "Programme national d'insertion professionnelle garantissant un premier emploi ou stage rémunéré pour les jeunes diplômés",
+      "highlight": {
+        "title": "Des Milliers d'Emplois Créés dans les Secteurs Porteurs",
+        "description": "Agriculture mécanisée, transformation agro-alimentaire, mines, pétrole, énergie solaire, construction, tourisme, artisanat, numérique et services."
+      }
+    },
+    "health": {
+      "title": "4. Santé, Protection Sociale & Bien-Être",
+      "subtitle": "Une jeunesse en bonne santé est une jeunesse productive et épanouie",
+      "point1": "Accès universel aux soins de santé via la Couverture Maladie Universelle (CMU) pour tous les jeunes",
+      "point2": "Réhabilitation complète des hôpitaux, centres de santé et équipement en matériel médical moderne",
+      "point3": "Programmes de prévention et de sensibilisation sur la santé reproductive, les IST/VIH et la santé mentale"
+    },
+    "culture": {
+      "title": "5. Épanouissement Culturel, Sportif et Créatif",
+      "subtitle": "Libérer le potentiel artistique et sportif de la jeunesse centrafricaine",
+      "point1": "Construction de centres culturels, centres artisanaux et maisons de la culture dans toutes les préfectures",
+      "point2": "Création d'espaces dédiés à la jeunesse : studios d'enregistrement, ateliers créatifs, terrains de sport et infrastructures sportives modernes",
+      "point3": "Soutien financier et logistique aux artistes, jeunes talents, créateurs de contenu et sportifs de haut niveau",
+      "point4": "Organisation de festivals, compétitions sportives nationales et événements culturels pour promouvoir les talents locaux"
+    },
+    "cta": {
+      "title": "Rejoignez le Mouvement de la Jeunesse",
+      "description": "Ensemble, construisons la Centrafrique que nous méritons. Votre voix compte, votre talent compte, votre avenir compte.",
+      "button1": "Partagez vos idées",
+      "button2": "Découvrez le programme complet"
+    }
   },
   "news": {
-    "title": "Actualités & Communiqués",
-    "subtitle": "Suivez la campagne et les dernières actualités",
+    "title": "Actualités & Galerie Photos",
+    "subtitle": "Suivez la campagne en images et en mots",
+    "tabs": {
+      "articles": "Actualités",
+      "gallery": "Galerie Photos"
+    },
     "categories": {
       "all": "Toutes",
       "Campagne": "Campagne",
@@ -113,27 +284,31 @@
     },
     "readMore": "Lire la suite",
     "publishedOn": "Publié le",
-    "noArticles": "Aucun article disponible"
+    "noArticles": "Aucun article disponible",
+    "gallery": {
+      "title": "Albums Photos de la Campagne",
+      "subtitle": "Revivez les moments forts en images",
+      "photos": "photos",
+      "viewPhotos": "Voir les photos",
+      "noAlbums": "Aucun album disponible pour le moment"
+    }
   },
   "videos": {
-    "title": "Discours & Vidéos",
-    "subtitle": "Regardez les interventions et discours du Dr Djorie",
-    "filters": {
-      "all": "Toutes",
-      "recent": "Récentes",
-      "popular": "Populaires"
+    "hero": {
+      "title": "Discours & Vidéos",
+      "subtitle": "Suivez la Campagne en Images",
+      "description": "Découvrez les interventions, discours et moments forts de la campagne du Dr Serge Ghislain Djorie"
     },
-    "tags": {
-      "security": "Sécurité",
-      "youth": "Jeunesse",
-      "economy": "Économie",
-      "panafrican": "Panafricanisme",
-      "education": "Éducation"
-    },
-    "duration": "Durée",
-    "location": "Lieu",
-    "date": "Date",
-    "noVideos": "Aucune vidéo disponible"
+    "search_placeholder": "Rechercher une vidéo...",
+    "section_title": "Toutes les Vidéos",
+    "video": "vidéo",
+    "videos": "vidéos",
+    "no_videos": "Aucune vidéo disponible pour le moment",
+    "no_results": "Aucune vidéo ne correspond à votre recherche",
+    "cta": {
+      "title": "Restez Connectés",
+      "description": "Abonnez-vous pour ne manquer aucune vidéo de la campagne"
+    }
   },
   "citizen": {
     "title": "Espace Citoyen",
@@ -230,6 +405,11 @@
     "terms": "Conditions d'utilisation",
     "quickLinks": "Liens rapides",
     "followUs": "Suivez-nous"
+  },
+  "professionDeFoi": {
+    "title": "Profession de Foi",
+    "subtitle": "Centrafrique Horizon 2026-2050",
+    "download": "Télécharger le PDF"
   },
   "common": {
     "readMore": "Lire la suite",

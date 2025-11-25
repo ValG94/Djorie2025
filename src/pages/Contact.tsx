@@ -20,15 +20,13 @@ export default function Contact() {
     setSuccess(false);
 
     try {
-      const token = Math.random().toString(36).substring(2);
 
       const { error: insertError } = await supabase
-        .from('newsletter_subscriptions')
+        .from('newsletter_subscribers')
         .insert([{
           email: formData.email,
           name: formData.name || null,
-          confirmation_token: token,
-          language: 'fr',
+          // language: 'fr',
         }]);
 
       if (insertError) {
@@ -50,7 +48,7 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: Mail, label: t('contact.info.email'), value: 'contact@djorie2025.cf' },
+    { icon: Mail, label: t('contact.info.email'), value: 'contact@sergedjorie.com' },
     { icon: Phone, label: t('contact.info.phone'), value: '+236 XX XX XX XX' },
     { icon: MapPin, label: t('contact.info.address'), value: 'Bangui, République Centrafricaine' },
   ];

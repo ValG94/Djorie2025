@@ -45,7 +45,7 @@ export default function Biography() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             <div className="flex items-center justify-center">
               <img
-                src="/djorie montre.jpeg"
+                src="/djorie fauteuil retouche.jpg"
                 alt="Dr Serge Ghislain Djorie"
                 className="rounded-2xl shadow-2xl max-w-full h-auto"
               />

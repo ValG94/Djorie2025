@@ -4,6 +4,7 @@
     "biography": "Biography",
     "vision": "Vision",
     "program": "Program",
+    "professionDeFoi": "Statement of Faith",
     "youth": "Youth",
     "news": "News",
     "videos": "Videos",
@@ -76,32 +77,202 @@
     }
   },
   "program": {
-    "title": "Program & Social Project",
-    "subtitle": "Six priorities to transform the Central African Republic",
-    "vision": "A 21st century Central African Republic, dignified, stable and sovereign",
-    "learnMore": "Learn more"
+    "showMore": "Learn more",
+    "showLess": "Show less",
+    "hero": {
+      "title": "Program & Social Project",
+      "subtitle": "10 Pillars to Transform the Central African Republic",
+      "description": "An ambitious, concrete and realistic program to build a strong, prosperous and sovereign nation"
+    },
+    "intro": {
+      "title": "A Global Vision for National Renaissance",
+      "description": "Our program is based on 10 strategic pillars that cover all aspects of national life. From security to justice, from education to energy, each axis is designed to address current challenges and build the future we deserve."
+    },
+    "pillars": {
+      "title": "The 10 Pillars of the Program",
+      "subtitle": "Concrete commitments for profound and lasting transformation"
+    },
+    "defense": {
+      "title": "Defense & National Security",
+      "subtitle": "Restore sovereignty and protect the national territory",
+      "point1": "Construction of strategic military cities at borders to secure the territory",
+      "point2": "Complete re-equipment of FACA, Police and Gendarmerie with modern equipment",
+      "point3": "Reopening of military schools and training centers to strengthen capacities",
+      "point4": "Significant increase in Defense budget to ensure operational effectiveness",
+      "point5": "Creation of a secure national identification database",
+      "point6": "Mandatory identification for all residents on national territory"
+    },
+    "security": {
+      "title": "Internal Security & External Intelligence",
+      "subtitle": "Modernize security and intelligence services",
+      "point1": "Systematic and controlled identification at entry to national territory",
+      "point2": "Complete modernization of intelligence services and National Police",
+      "point3": "Mandatory declaration of births and deaths throughout the country",
+      "point4": "Implementation of a secure and centralized database",
+      "point5": "Strengthening regional and international cooperation in security matters",
+      "point6": "Continuous training of security agents in modern techniques"
+    },
+    "diplomacy": {
+      "title": "Diplomacy & Foreign Relations",
+      "subtitle": "Assert the Central African Republic's place on the international stage",
+      "point1": "Strategic review of all bilateral and multilateral agreements",
+      "point2": "Assignment of diplomats based on strict criteria of competence and merit",
+      "point3": "Creation of a National Diaspora Agency to mobilize skills",
+      "point4": "Strengthening partnerships with African countries and regional organizations",
+      "point5": "Promotion of the Central African Republic's image internationally",
+      "point6": "Development of economic and cultural cooperation"
+    },
+    "social": {
+      "title": "Social Policy, Education, Health & Youth",
+      "subtitle": "Invest in human capital to build the future",
+      "point1": "Implementation of Universal Health Coverage (UHC) for all citizens",
+      "point2": "Complete rehabilitation of hospitals and health centers throughout the territory",
+      "point3": "Rehabilitation and construction of modern schools, middle schools, high schools and universities",
+      "point4": "Free and compulsory schooling up to a defined age to guarantee access to education",
+      "point5": "Enhancement of study scholarships for all young people without exclusion",
+      "point6": "Creation of youth training centers in all prefectures"
+    },
+    "infrastructure": {
+      "title": "Public Infrastructure, Roads & Development",
+      "subtitle": "Modernize the country and connect regions",
+      "point1": "Development of a National Architectural Plan for harmonious development",
+      "point2": "Rehabilitation and construction of modern roads, bridges and highways",
+      "point3": "Construction of railways: Bangui-Douala and Bangui-Khartoum",
+      "point4": "Creation of the Autonomous Port of Mongoumba to facilitate trade",
+      "point5": "Construction of modern administrative centers in all prefectures",
+      "point6": "Rehabilitation and construction of international airports"
+    },
+    "aid": {
+      "title": "Management of External Aid",
+      "subtitle": "Transparency and efficiency in resource utilization",
+      "point1": "Creation of a special BEAC account dedicated to managing external aid",
+      "point2": "Legal security of all public and private contracts",
+      "point3": "Strict control and rigorous monitoring of construction site execution",
+      "point4": "Total transparency in the management of international financing",
+      "point5": "Regular publication of fund utilization reports",
+      "point6": "Relentless fight against corruption and embezzlement of funds"
+    },
+    "culture": {
+      "title": "Culture, Arts, Communication & Public Media",
+      "subtitle": "Promote cultural identity and unleash creativity",
+      "point1": "Construction of cultural and craft centers in all prefectures",
+      "point2": "Erection of a new Statue of Peace and modernization of the National Museum",
+      "point3": "Complete modernization of national radio and television channels",
+      "point4": "Creation of training schools for journalists and media technicians",
+      "point5": "Satellite broadcasting of public media for national coverage",
+      "point6": "Support for artists, creators and cultural actors"
+    },
+    "agriculture": {
+      "title": "Agriculture & Livestock",
+      "subtitle": "Modernize the agricultural sector and ensure food security",
+      "point1": "Complete mechanization of agriculture to increase productivity",
+      "point2": "Industrialization and packaging of agricultural products for export",
+      "point3": "Creation of agricultural training schools in all regions",
+      "point4": "Establishment of a National Directorate of Agricultural Products",
+      "point5": "Development of modern livestock farming and animal sectors",
+      "point6": "Facilitation of access to credit and inputs for farmers"
+    },
+    "energy": {
+      "title": "Energy Policy & Electrification",
+      "subtitle": "Light up the entire country and exploit our natural resources",
+      "point1": "Responsible and transparent management of mineral resources (diamond, gold, etc.)",
+      "point2": "Massive development of hydroelectric, photovoltaic and wind power",
+      "point3": "Complete electrification of cities and rural areas",
+      "point4": "Creation of schools and training centers in energy and electricity",
+      "point5": "Rational exploitation of oil and construction of national refineries",
+      "point6": "Promotion of renewable energy and energy efficiency"
+    },
+    "justice": {
+      "title": "Justice & Press",
+      "subtitle": "Guarantee the rule of law and freedom of expression",
+      "point1": "Guarantee of an independent and impartial Justice for all",
+      "point2": "Recognition of the Press as the 4th power and guarantee of its freedom",
+      "point3": "Relentless fight against corruption and impunity at all levels",
+      "point4": "Significant increase in Justice and Media budgets",
+      "point5": "Modernization of courts and continuous training of magistrates",
+      "point6": "Protection of journalists and promotion of investigative journalism"
+    },
+    "vision": {
+      "title": "Our Vision for the Central African Republic",
+      "description": "A 21st century Central African Republic, dignified, stable and sovereign. A country where every citizen can live in security, access quality services and contribute to national development.",
+      "point1": "Visionary leadership in service of the people and the nation",
+      "point2": "Concrete and realistic solutions for today's challenges",
+      "point3": "A united, prosperous and respected Central African Republic in the world",
+      "point4": "A profound and lasting transformation for future generations"
+    },
+    "cta": {
+      "title": "Our Time Has Come",
+      "description": "Together, let's make history! Join the movement to build the Central African Republic we deserve."
+    }
   },
   "youth": {
-    "title": "Youth & Year Zero of Change",
-    "subtitle": "The future of the Central African Republic belongs to its youth",
-    "intro": "More than 60% of the Central African population is under 25. It is this youth that will build the new Central African Republic.",
-    "yearZero": {
-      "title": "Year zero of change",
-      "description": "2025 marks the beginning of a new era. We break with resignation and embrace our potential."
+    "hero": {
+      "title": "Youth at the Heart of Our Project",
+      "subtitle": "Over 60% of the population is under 25 years old",
+      "description": "This youth is not a problem, it is our greatest wealth! It will be at the heart of our national transformation project."
     },
-    "potential": {
-      "title": "Human and natural potential",
-      "description": "Our country is full of natural resources and untapped talents. It's time to value them."
+    "intro": {
+      "title": "A Generation That Carries the Future",
+      "description": "Central African youth is talented, creative and determined. Our mission is to provide them with the means to succeed: quality education, professional training, decent jobs, accessible healthcare and spaces for cultural and sports development.",
+      "stat": "🎯 Over 60% of the Central African population is under 25 years old — This is our greatest strength!"
     },
-    "engagement": {
-      "title": "Youth engagement",
-      "description": "Young people must be at the heart of the transformation process, actors and beneficiaries of change."
+    "education": {
+      "title": "1. Modern and Accessible Education for All",
+      "subtitle": "A renovated, equipped and free education system up to a certain level",
+      "point1": "Rehabilitation and modernization of all schools, middle schools and high schools throughout the national territory",
+      "point2": "Complete reconstruction and equipment of universities with modern infrastructure, digital libraries and laboratories",
+      "point3": "Free and compulsory schooling up to a defined age to guarantee access to education for all children",
+      "point4": "Enhanced scholarships for all young people without exclusion, with a merit and social equity system"
     },
-    "cta": "Join the movement"
+    "formation": {
+      "title": "2. Professional Training and Future Opportunities",
+      "subtitle": "Skills adapted to the needs of the 21st century and growth sectors",
+      "point1": "Creation of youth training centers in all prefectures to bring training closer to populations",
+      "point2": "Technical training in key sectors: mechanized agriculture, modern livestock, renewable energy, communication and security",
+      "point3": "Technological upgrading with training in digital professions, media, design and innovation",
+      "point4": "Partnerships with international institutions for recognized certifications and academic exchanges"
+    },
+    "employment": {
+      "title": "3. Youth Employment & Entrepreneurship",
+      "subtitle": "Making youth the engine of reconstruction and economic growth",
+      "point1": "Massive integration of young people in national reconstruction sectors: infrastructure, agriculture, energy, local industries",
+      "point2": "Creation of incubators and business nurseries in all regions with technical and financial support",
+      "point3": "Facilitated access to financing for young entrepreneurs through dedicated funds, micro-credits and subsidies",
+      "point4": "National professional integration program guaranteeing a first job or paid internship for young graduates",
+      "highlight": {
+        "title": "Thousands of Jobs Created in Growth Sectors",
+        "description": "Mechanized agriculture, agro-food processing, mining, oil, solar energy, construction, tourism, crafts, digital and services."
+      }
+    },
+    "health": {
+      "title": "4. Health, Social Protection & Well-Being",
+      "subtitle": "A healthy youth is a productive and fulfilled youth",
+      "point1": "Universal access to healthcare through Universal Health Coverage (UHC) for all young people",
+      "point2": "Complete rehabilitation of hospitals, health centers and equipment with modern medical equipment",
+      "point3": "Prevention and awareness programs on reproductive health, STIs/HIV and mental health"
+    },
+    "culture": {
+      "title": "5. Cultural, Sports and Creative Development",
+      "subtitle": "Unleashing the artistic and sports potential of Central African youth",
+      "point1": "Construction of cultural centers, craft centers and cultural houses in all prefectures",
+      "point2": "Creation of spaces dedicated to youth: recording studios, creative workshops, sports fields and modern sports infrastructure",
+      "point3": "Financial and logistical support for artists, young talents, content creators and high-level athletes",
+      "point4": "Organization of festivals, national sports competitions and cultural events to promote local talent"
+    },
+    "cta": {
+      "title": "Join the Youth Movement",
+      "description": "Together, let's build the Central African Republic we deserve. Your voice matters, your talent matters, your future matters.",
+      "button1": "Share your ideas",
+      "button2": "Discover the full program"
+    }
   },
   "news": {
-    "title": "News & Announcements",
-    "subtitle": "Follow the campaign and latest news",
+    "title": "News & Photo Gallery",
+    "subtitle": "Follow the campaign in images and words",
+    "tabs": {
+      "articles": "News",
+      "gallery": "Photo Gallery"
+    },
     "categories": {
       "all": "All",
       "Campagne": "Campaign",
@@ -113,27 +284,31 @@
     },
     "readMore": "Read more",
     "publishedOn": "Published on",
-    "noArticles": "No articles available"
+    "noArticles": "No articles available",
+    "gallery": {
+      "title": "Campaign Photo Albums",
+      "subtitle": "Relive the highlights in pictures",
+      "photos": "photos",
+      "viewPhotos": "View photos",
+      "noAlbums": "No albums available at the moment"
+    }
   },
   "videos": {
-    "title": "Speeches & Videos",
-    "subtitle": "Watch Dr Djorie's interventions and speeches",
-    "filters": {
-      "all": "All",
-      "recent": "Recent",
-      "popular": "Popular"
+    "hero": {
+      "title": "Speeches & Videos",
+      "subtitle": "Follow the Campaign in Images",
+      "description": "Discover the speeches, interventions and key moments of Dr Serge Ghislain Djorie's campaign"
     },
-    "tags": {
-      "security": "Security",
-      "youth": "Youth",
-      "economy": "Economy",
-      "panafrican": "Pan-Africanism",
-      "education": "Education"
-    },
-    "duration": "Duration",
-    "location": "Location",
-    "date": "Date",
-    "noVideos": "No videos available"
+    "search_placeholder": "Search for a video...",
+    "section_title": "All Videos",
+    "video": "video",
+    "videos": "videos",
+    "no_videos": "No videos available at the moment",
+    "no_results": "No videos match your search",
+    "cta": {
+      "title": "Stay Connected",
+      "description": "Subscribe to not miss any campaign video"
+    }
   },
   "citizen": {
     "title": "Citizen Space",
@@ -230,6 +405,11 @@
     "terms": "Terms of use",
     "quickLinks": "Quick links",
     "followUs": "Follow us"
+  },
+  "professionDeFoi": {
+    "title": "Statement of Faith",
+    "subtitle": "Central African Republic Horizon 2026-2050 (Document in French)",
+    "download": "Download PDF (French)"
   },
   "common": {
     "readMore": "Read more",

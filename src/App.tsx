@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Biography from './pages/Biography';
 import Vision from './pages/Vision';
 import Program from './pages/Program';
+import ProfessionDeFoi from './pages/ProfessionDeFoi';
 import Youth from './pages/Youth';
 import News from './pages/News';
 import Videos from './pages/Videos';
@@ -16,6 +17,13 @@ import Donate from './pages/Donate';
 import Contact from './pages/Contact';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminArticles from './pages/admin/AdminArticles';
+import AdminVideos from './pages/admin/AdminVideos';
+import AdminMessages from './pages/admin/AdminMessages';
+import AdminGallery from './pages/admin/AdminGallery';
+import AdminNewsletter from './pages/admin/AdminNewsletter';
+import AdminDonations from './pages/admin/AdminDonations';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -33,6 +41,54 @@ function App() {
             }
           />
           <Route
+            path="/admin/articles"
+            element={
+              <ProtectedRoute>
+                <AdminArticles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/videos"
+            element={
+              <ProtectedRoute>
+                <AdminVideos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/messages"
+            element={
+              <ProtectedRoute>
+                <AdminMessages />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/gallery"
+            element={
+              <ProtectedRoute>
+                <AdminGallery />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/newsletter"
+            element={
+              <ProtectedRoute>
+                <AdminNewsletter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/donations"
+            element={
+              <ProtectedRoute>
+                <AdminDonations />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="*"
             element={
               <div className="flex flex-col min-h-screen">
@@ -43,6 +99,7 @@ function App() {
                     <Route path="/biography" element={<Biography />} />
                     <Route path="/vision" element={<Vision />} />
                     <Route path="/program" element={<Program />} />
+                    <Route path="/profession-de-foi" element={<ProfessionDeFoi />} />
                     <Route path="/youth" element={<Youth />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/videos" element={<Videos />} />
@@ -52,7 +109,9 @@ function App() {
                   </Routes>
                 </main>
                 <Footer />
+                <ScrollToTop />
               </div>
+              
             }
           />
         </Routes>

@@ -76,7 +76,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-blue-100">
                 <Mail size={18} className="mt-0.5 flex-shrink-0" />
-                <span>contact@djorie2025.cf</span>
+                <span>contact@sergedjorie.com</span>
               </li>
               <li className="flex items-start space-x-2 text-sm text-blue-100">
                 <Phone size={18} className="mt-0.5 flex-shrink-0" />
@@ -121,7 +121,7 @@ export default function Footer() {
             <img
               src="/favicon.svg"
               alt="ONE NATION"
-              className="h-6 w-6 brightness-0 invert group-hover:opacity-80 transition-opacity"
+              className="h-6 w-6 invert group-hover:opacity-80 transition-opacity"
             />
             <span className="text-sm font-semibold text-white group-hover:text-yellow-300 transition-colors">
               ONE NATION

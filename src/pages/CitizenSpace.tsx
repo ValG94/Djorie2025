@@ -6,7 +6,7 @@ import { supabase } from '../lib/supabase';
 interface Message {
   id: string;
   name: string;
-  content: string;
+  message: string;
   created_at: string;
 }
 
@@ -17,8 +17,7 @@ export default function CitizenSpace() {
     email: '',
     phone: '',
     message_type: 'support',
-    subject: '',
-    content: '',
+    message: '',
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -32,10 +31,9 @@ export default function CitizenSpace() {
   const fetchPublicMessages = async () => {
     try {
       const { data, error } = await supabase
-        .from('messages')
-        .select('id, name, content, created_at')
+        .from('citizen_messages')
+        .select('id, name, message, created_at')
         .eq('status', 'approved')
-        .eq('is_public', true)
         .eq('message_type', 'support')
         .order('created_at', { ascending: false })
         .limit(6);
@@ -55,7 +53,7 @@ export default function CitizenSpace() {
 
     try {
       const { error: insertError } = await supabase
-        .from('messages')
+        .from('citizen_messages')
         .insert([formData]);
 
       if (insertError) throw insertError;
@@ -66,9 +64,13 @@ export default function CitizenSpace() {
         email: '',
         phone: '',
         message_type: 'support',
-        subject: '',
-        content: '',
+        message: '',
       });
+      
+      // Refresh messages after successful submission
+      setTimeout(() => {
+        fetchPublicMessages();
+      }, 1000);
     } catch (err) {
       setError(t('citizen.form.error'));
       console.error('Error submitting message:', err);
@@ -168,7 +170,7 @@ export default function CitizenSpace() {
                           : 'border-gray-200 hover:border-blue-300'
                       }`}
                     >
-                      <type.icon size={24} className={formData.message_type === type.value ? 'text-blue-600' : 'text-gray-600'} />
+                      <type.icon size={24} className={formData.message === type.value ? 'text-blue-600' : 'text-gray-600'} />
                       <span className="text-xs mt-2 text-center">{type.label}</span>
                     </button>
                   ))}
@@ -176,30 +178,17 @@ export default function CitizenSpace() {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
-                  {t('citizen.form.subject')} *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  required
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                   {t('citizen.form.message')} *
                 </label>
                 <textarea
-                  id="content"
+                  id="message"
                   required
                   rows={6}
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder={t('citizen.form.messagePlaceholder')}
                 />
               </div>
 
@@ -232,7 +221,7 @@ export default function CitizenSpace() {
               {publicMessages.map((message) => (
                 <div key={message.id} className="bg-white rounded-xl shadow-lg p-6">
                   <Heart className="text-red-600 mb-3" size={24} />
-                  <p className="text-gray-700 mb-4 line-clamp-4">{message.content}</p>
+                  <p className="text-gray-700 mb-4 line-clamp-4">{message.message}</p>
                   <p className="text-sm font-semibold text-gray-900">{message.name}</p>
                   <p className="text-xs text-gray-500">
                     {new Date(message.created_at).toLocaleDateString()}

@@ -238,7 +238,7 @@ export type Database = {
           updated_at?: string;
         };
       };
-      newsletter_subscriptions: {
+      newsletter_subscribers: {
         Row: {
           id: string;
           email: string;

@@ -33,7 +33,7 @@ export default function Header() {
               className="h-12 w-12"
             />
             <div className="flex flex-col">
-              <span className="font-bold text-lg text-blue-900">Dr Serge Ghislain Djorie</span>
+              <span className="font-bold text-lg text-blue-900">Djorie 2025</span>
               <span className="text-xs text-red-600 font-semibold">Présidentielle 2025</span>
             </div>
           </Link>

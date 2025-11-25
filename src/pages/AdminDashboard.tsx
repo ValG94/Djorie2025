@@ -1,5 +1,7 @@
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 import {
   LogOut,
   FileText,
@@ -8,12 +10,81 @@ import {
   Heart,
   Mail,
   Users,
-  Settings
+  Settings,
+  Image,
+  DollarSign
 } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const [stats, setStats] = useState({
+    articles: 0,
+    videos: 0,
+    messages: 0,
+    messagesPending: 0,
+    albums: 0,
+    subscribers: 0,
+    donations: 0,
+  });
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      // Fetch articles count
+      const { count: articlesCount } = await supabase
+        .from('articles')
+        .select('*', { count: 'exact', head: true });
+
+      // Fetch videos count
+      const { count: videosCount } = await supabase
+        .from('videos')
+        .select('*', { count: 'exact', head: true });
+
+      // Fetch messages count
+      const { count: messagesCount } = await supabase
+        .from('citizen_messages')
+        .select('*', { count: 'exact', head: true });
+
+      // Fetch pending messages count
+      const { count: pendingCount } = await supabase
+        .from('citizen_messages')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'pending');
+
+      // Fetch albums count
+      const { count: albumsCount } = await supabase
+        .from('photo_albums')
+        .select('*', { count: 'exact', head: true });
+
+      // Fetch subscribers count
+      const { count: subscribersCount } = await supabase
+        .from('newsletter_subscribers')
+        .select('*', { count: 'exact', head: true })
+        .eq('is_active', true);
+
+      // Fetch donations count
+      const { count: donationsCount } = await supabase
+        .from('donations')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'completed');
+
+      setStats({
+        articles: articlesCount || 0,
+        videos: videosCount || 0,
+        messages: messagesCount || 0,
+        messagesPending: pendingCount || 0,
+        albums: albumsCount || 0,
+        subscribers: subscribersCount || 0,
+        donations: donationsCount || 0,
+      });
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    }
+  };
 
   const handleSignOut = async () => {
     await signOut();
@@ -26,42 +97,56 @@ export default function AdminDashboard() {
       description: 'Gérer les articles et communiqués',
       icon: FileText,
       color: 'from-blue-600 to-blue-700',
-      stats: '0 articles',
+      stats: `${stats.articles} article(s)`,
+      path: '/admin/articles',
     },
     {
       title: 'Vidéos',
       description: 'Gérer les discours et vidéos',
       icon: Video,
       color: 'from-red-600 to-red-700',
-      stats: '0 vidéos',
+      stats: `${stats.videos} vidéo(s)`,
+      path: '/admin/videos',
     },
     {
       title: 'Messages citoyens',
       description: 'Modérer les messages reçus',
       icon: MessageSquare,
       color: 'from-green-600 to-green-700',
-      stats: '0 en attente',
+      stats: `${stats.messagesPending} en attente`,
+      path: '/admin/messages',
+    },
+    {
+      title: 'Galerie Photo',
+      description: 'Gérer les albums et photos',
+      icon: Image,
+      color: 'from-purple-600 to-purple-700',
+      stats: `${stats.albums} album(s)`,
+      path: '/admin/gallery',
+    },
+    {
+      title: 'Newsletter',
+      description: 'Gérer les abonnés et campagnes',
+      icon: Mail,
+      color: 'from-indigo-600 to-indigo-700',
+      stats: `${stats.subscribers} abonné(s)`,
+      path: '/admin/newsletter',
     },
     {
       title: 'Dons',
       description: 'Suivre les contributions',
-      icon: Heart,
+      icon: DollarSign,
       color: 'from-yellow-600 to-yellow-700',
-      stats: '0 XAF',
-    },
-    {
-      title: 'Newsletter',
-      description: 'Gérer les abonnés',
-      icon: Mail,
-      color: 'from-purple-600 to-purple-700',
-      stats: '0 abonnés',
+      stats: `${stats.donations} don(s)`,
+      path: '/admin/donations',
     },
     {
       title: 'Programme',
       description: 'Modifier les sections du programme',
       icon: Settings,
       color: 'from-gray-600 to-gray-700',
-      stats: '6 sections',
+      stats: 'Bientôt disponible',
+      path: null,
     },
   ];
 
@@ -113,7 +198,10 @@ export default function AdminDashboard() {
           {sections.map((section, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer"
+              onClick={() => section.path && navigate(section.path)}
+              className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all ${
+                section.path ? 'cursor-pointer' : 'opacity-75 cursor-not-allowed'
+              }`}
             >
               <div className={`inline-block p-3 rounded-lg bg-gradient-to-r ${section.color} mb-4`}>
                 <section.icon size={24} className="text-white" />
@@ -128,25 +216,31 @@ export default function AdminDashboard() {
                 <span className="text-sm font-semibold text-gray-500">
                   {section.stats}
                 </span>
-                <span className="text-blue-600 font-medium text-sm">
-                  Gérer →
+                <span className={`font-medium text-sm ${section.path ? 'text-blue-600' : 'text-gray-400'}`}>
+                  {section.path ? 'Gérer →' : 'Bientôt'}
                 </span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <div className="mt-8 bg-green-50 border border-green-200 rounded-xl p-6">
           <div className="flex items-start space-x-3">
-            <Users className="text-blue-600 mt-1" size={24} />
+            <Users className="text-green-600 mt-1" size={24} />
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">
-                Interface d'administration en cours de développement
+                ✅ Modules disponibles (Étape 1)
               </h3>
-              <p className="text-gray-700 text-sm">
-                Les fonctionnalités complètes de gestion de contenu (CRUD) seront ajoutées
-                dans les prochaines versions. Pour l'instant, vous pouvez gérer le contenu
-                directement via l'interface Supabase ou nous contacter pour des modifications.
+              <p className="text-gray-700 text-sm mb-2">
+                Les modules suivants sont maintenant opérationnels :
+              </p>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• <strong>Actualités</strong> : Créer, modifier, supprimer des articles avec images</li>
+                <li>• <strong>Vidéos</strong> : Gérer les vidéos YouTube avec thumbnails personnalisés</li>
+                <li>• <strong>Messages citoyens</strong> : Modérer et répondre aux messages</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3">
+                Les autres modules (Dons, Newsletter, Programme) seront ajoutés dans les prochaines étapes.
               </p>
             </div>
           </div>

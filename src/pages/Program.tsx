@@ -16,7 +16,7 @@ import {
   ArrowRight,
   Sparkles
 } from 'lucide-react';
-import ScrollToTop from '../components/ScrollToTop';
+// import ScrollToTop from '../components/scrollToTop';
 
 export default function Program() {
   const { t } = useTranslation();
@@ -183,7 +183,7 @@ export default function Program() {
                 className={`relative group cursor-pointer transform transition-all duration-500 hover:scale-105 ${
                   selectedPillar === pillar.id ? 'scale-105 ring-4 ring-offset-2' : ''
                 } ${pillar.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-2xl`}
-                style={selectedPillar === pillar.id ? { ringColor: pillar.iconBg.replace('bg-', '') } : {}}
+                // style={selectedPillar === pillar.id ? { ringColor: pillar.iconBg.replace('bg-', '') } : {}}
               >
                 {/* Badge numéro */}
                 <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-br from-white to-gray-100 shadow-lg flex items-center justify-center">
@@ -209,7 +209,7 @@ export default function Program() {
 
                 {/* Indicateur d'expansion */}
                 <div className="flex items-center text-sm font-semibold text-gray-700 group-hover:text-gray-900">
-                  <span>{selectedPillar === pillar.id ? 'Voir moins' : 'En savoir plus'}</span>
+                  <span>{selectedPillar === pillar.id ? t('program.showLess') : t('program.showMore')}</span>
                   <ArrowRight size={16} className={`ml-2 transition-transform duration-300 ${
                     selectedPillar === pillar.id ? 'rotate-90' : 'group-hover:translate-x-1'
                   }`} />
@@ -221,7 +221,7 @@ export default function Program() {
           {/* Section détails du pilier sélectionné */}
           {selectedPillar && (
             <div ref={detailsRef} className="mt-12 pt-8 animate-fadeIn scroll-mt-20">
-              {programPillars.filter(p => p.id === selectedPillar).map((pillar, index) => (
+              {programPillars.filter(p => p.id === selectedPillar).map((pillar) => (
                 <div
                   key={pillar.id}
                   className={`${pillar.bgColor} rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-white`}
@@ -284,7 +284,7 @@ export default function Program() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/programme + slogan.jpeg"
+                src="/affiche heure sonné.jpeg"
                 alt="Dr Serge Ghislain Djorie"
                 className="w-full h-full object-cover"
               />
@@ -332,7 +332,7 @@ export default function Program() {
         </div>
       </section>
 
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
     </div>
   );
 }
