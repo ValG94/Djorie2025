@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Scale, TrendingUp, GraduationCap } from 'lucide-react';
+import ScrollToTop from '../components/scrollToTop';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -10,10 +11,9 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/Djorie costume bleu.jpeg"
+            src="/djorie polo blanc.jpeg"
             alt="Dr Serge Ghislain Djorie"
-            className="w-full h-full object-cover"
-
+            className="w-full h-full object-cover object-[center_20%]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-red-900/90" />
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/djorie gros plan.jpeg"
+                src="/djorie assis fauteuil rouge.jpg"
                 alt="Dr Serge Ghislain Djorie"
                 className="rounded-2xl shadow-2xl"
               />
@@ -134,6 +134,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <ScrollToTop />
     </div>
   );
 }
