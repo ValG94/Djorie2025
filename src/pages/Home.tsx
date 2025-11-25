@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Scale, TrendingUp, GraduationCap } from 'lucide-react';
-import ScrollToTop from '../components/scrollToTop';
+import {ScrollToTop} from '../components/scrollToTop';
 
 export default function Home() {
   const { t } = useTranslation();
