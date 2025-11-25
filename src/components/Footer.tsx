@@ -107,6 +107,27 @@ export default function Footer() {
           <p className="text-sm text-blue-100">
             {t('footer.copyright')}
           </p>
+
+          <a
+            href="https://www.onenationagency.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 group transition-all hover:scale-105"
+            title="Visit ONE NATION Agency"
+          >
+            <span className="text-sm text-blue-100 group-hover:text-white transition-colors">
+              made by :
+            </span>
+            <img
+              src="/favicon.svg"
+              alt="ONE NATION"
+              className="h-6 w-6 brightness-0 invert group-hover:opacity-80 transition-opacity"
+            />
+            <span className="text-sm font-semibold text-white group-hover:text-yellow-300 transition-colors">
+              ONE NATION
+            </span>
+          </a>
+
           <div className="flex space-x-6">
             <Link to="/privacy" className="text-sm text-blue-100 hover:text-white transition-colors">
               {t('footer.privacy')}
