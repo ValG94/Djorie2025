@@ -38,6 +38,47 @@ export type Database = {
           updated_at?: string;
         };
       };
+      articles: {
+        Row: {
+          id: string;
+          title: string;
+          title_en: string;
+          content: string;
+          content_en: string;
+          category: string;
+          image_url: string | null;
+          pdf_url: string | null;
+          published: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          title_en: string;
+          content: string;
+          content_en: string;
+          category?: string;
+          image_url?: string | null;
+          pdf_url?: string | null;
+          published?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          title?: string;
+          title_en?: string;
+          content?: string;
+          content_en?: string;
+          category?: string;
+          image_url?: string | null;
+          pdf_url?: string | null;
+          published?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
       posts: {
         Row: {
           id: string;
@@ -51,7 +92,6 @@ export type Database = {
           excerpt_en: string;
           image_url: string | null;
           published: boolean;
-          published_at: string | null;
           author_id: string | null;
           created_at: string;
           updated_at: string;
@@ -68,7 +108,6 @@ export type Database = {
           excerpt_en: string;
           image_url?: string | null;
           published?: boolean;
-          published_at?: string | null;
           author_id?: string | null;
           created_at?: string;
           updated_at?: string;
@@ -85,7 +124,6 @@ export type Database = {
           excerpt_en?: string;
           image_url?: string | null;
           published?: boolean;
-          published_at?: string | null;
           author_id?: string | null;
           created_at?: string;
           updated_at?: string;
