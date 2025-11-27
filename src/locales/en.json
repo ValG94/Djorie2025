@@ -285,6 +285,15 @@
     "readMore": "Read more",
     "publishedOn": "Published on",
     "noArticles": "No articles available",
+    "pdfDocument": "PDF Document",
+    "downloadPDF": "Download PDF",
+    "pdfViewer": {
+      "preview": "Preview",
+      "viewing": "Viewing document",
+      "fullscreen": "Fullscreen",
+      "close": "Close",
+      "hint": "Press ESC to close or use browser controls to navigate"
+    },
     "gallery": {
       "title": "Campaign Photo Albums",
       "subtitle": "Relive the highlights in pictures",

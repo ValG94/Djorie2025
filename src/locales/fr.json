@@ -285,6 +285,15 @@
     "readMore": "Lire la suite",
     "publishedOn": "Publié le",
     "noArticles": "Aucun article disponible",
+    "pdfDocument": "Document PDF",
+    "downloadPDF": "Télécharger le PDF",
+    "pdfViewer": {
+      "preview": "Prévisualiser",
+      "viewing": "Consultation du document",
+      "fullscreen": "Plein écran",
+      "close": "Fermer",
+      "hint": "Appuyez sur ESC pour fermer ou utilisez les contrôles du navigateur pour naviguer"
+    },
     "gallery": {
       "title": "Albums Photos de la Campagne",
       "subtitle": "Revivez les moments forts en images",

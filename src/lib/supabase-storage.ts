@@ -71,7 +71,34 @@ export async function deleteFile(url: string, bucket: string): Promise<void> {
 }
 
 /**
- * Valide qu'un fichier est une image
+ * Valide qu'un fichier est une image ou un PDF
+ * @param file Le fichier à valider
+ * @param maxSizeMB Taille maximale en MB (défaut: 5MB pour images, 10MB pour PDF)
+ */
+export function validateMediaFile(file: File, maxSizeMB?: number): boolean {
+  const isImage = file.type.startsWith('image/');
+  const isPDF = file.type === 'application/pdf';
+  
+  // Vérifier le type
+  if (!isImage && !isPDF) {
+    throw new Error('Le fichier doit être une image (JPG, PNG, WEBP) ou un PDF');
+  }
+
+  // Taille max par défaut selon le type
+  const defaultMaxSize = isPDF ? 10 : 5;
+  const maxSize = maxSizeMB || defaultMaxSize;
+  
+  // Vérifier la taille
+  const maxSizeBytes = maxSize * 1024 * 1024;
+  if (file.size > maxSizeBytes) {
+    throw new Error(`Le fichier ne doit pas dépasser ${maxSize}MB`);
+  }
+
+  return true;
+}
+
+/**
+ * Valide qu'un fichier est une image (fonction conservée pour compatibilité)
  * @param file Le fichier à valider
  * @param maxSizeMB Taille maximale en MB (défaut: 5MB)
  */

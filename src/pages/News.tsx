@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Calendar, MapPin, Image as ImageIcon } from 'lucide-react';
+import { Calendar, MapPin, Image as ImageIcon, FileText, Download } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import PhotoLightbox from '../components/PhotoLightbox';
+import PDFViewer from '../components/PDFViewer';
+import ArticleModal from '../components/ArticleModal';
 
 interface Article {
   id: string;
   title: string;
   title_en: string;
-  excerpt: string;
-  excerpt_en: string;
+  content: string;
+  content_en: string;
   image_url: string | null;
+  pdf_url: string | null;
   category: string;
-  published_at: string;
+  published: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 interface Album {
@@ -47,8 +52,25 @@ export default function News() {
   const [lightboxPhotos, setLightboxPhotos] = useState<Photo[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
+  
+  // PDF Viewer state
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [pdfTitle, setPdfTitle] = useState<string>('');
+  const [showPDFViewer, setShowPDFViewer] = useState(false);
+  
+  // Article Modal state
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [showArticleModal, setShowArticleModal] = useState(false);
 
-  const categories = ['all', 'Campagne', 'Programmes', 'Déclarations', 'Médiation', 'Paix 2020', 'Autre'];
+  const categories = [
+    { value: 'all', label: 'Toutes' },
+    { value: 'campaign', label: 'Campagne' },
+    { value: 'programs', label: 'Programmes' },
+    { value: 'declarations', label: 'Déclarations' },
+    { value: 'mediation', label: 'Médiation' },
+    { value: 'peace2020', label: 'Paix 2020' },
+    { value: 'other', label: 'Autre' },
+  ];
 
   useEffect(() => {
     fetchArticles();
@@ -62,7 +84,7 @@ export default function News() {
         .from('articles')
         .select('*')
         .eq('published', true)
-        .order('published_at', { ascending: false })
+        .order('created_at', { ascending: false })
         .limit(12);
 
       if (selectedCategory !== 'all') {
@@ -86,7 +108,7 @@ export default function News() {
         .from('photo_albums')
         .select('*')
         .eq('published', true)
-        .order('event_date', { ascending: false });
+        .order('event_date', { ascending: false});
 
       if (albumsError) throw albumsError;
 
@@ -98,10 +120,7 @@ export default function News() {
             .select('*', { count: 'exact', head: true })
             .eq('album_id', album.id);
 
-          return {
-            ...album,
-            photo_count: count || 0,
-          };
+          return { ...album, photo_count: count || 0 };
         })
       );
 
@@ -113,7 +132,7 @@ export default function News() {
     }
   };
 
-  const openAlbum = async (albumId: string) => {
+  const openAlbumLightbox = async (albumId: string) => {
     try {
       const { data, error } = await supabase
         .from('photos')
@@ -131,6 +150,12 @@ export default function News() {
     } catch (error) {
       console.error('Error fetching photos:', error);
     }
+  };
+
+  // Déterminer si une URL est un PDF
+  const isPDF = (url: string | null): boolean => {
+    if (!url) return false;
+    return url.toLowerCase().endsWith('.pdf');
   };
 
   return (
@@ -200,15 +225,15 @@ export default function News() {
             <div className="flex flex-wrap gap-3 mb-8 justify-center">
               {categories.map((category) => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  key={category.value}
+                  onClick={() => setSelectedCategory(category.value)}
                   className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                    selectedCategory === category
+                    selectedCategory === category.value
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-white text-gray-700 hover:bg-blue-50 shadow'
                   }`}
                 >
-                  {t(`news.categories.${category}`)}
+                  {category.label}
                 </button>
               ))}
             </div>
@@ -226,22 +251,73 @@ export default function News() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {articles.map((article) => {
                   const title = i18n.language === 'en' ? article.title_en : article.title;
-                  const excerpt = i18n.language === 'en' ? article.excerpt_en : article.excerpt;
+                  const content = i18n.language === 'en' ? article.content_en : article.content;
+                  const excerpt = content.substring(0, 150) + '...';
+                  const hasPDF = article.pdf_url !== null;
+                  const hasImage = article.image_url !== null;
 
                   return (
                     <div
                       key={article.id}
-                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer"
+                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2"
                     >
-                      {article.image_url && (
-                        <div className="relative h-48 overflow-hidden">
-                          <img
-                            src={article.image_url}
-                            alt={title}
-                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                          />
-                        </div>
-                      )}
+                      {/* Image de couverture ou icône PDF */}
+                      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-gray-100">
+                        {hasImage ? (
+                          // Image de couverture (cliquable si PDF)
+                          <div
+                            className={hasPDF ? 'cursor-pointer' : ''}
+                            onClick={() => {
+                              if (hasPDF && article.pdf_url) {
+                                setPdfUrl(article.pdf_url);
+                                setPdfTitle(title);
+                                setShowPDFViewer(true);
+                              }
+                            }}
+                          >
+                            <img
+                              src={article.image_url}
+                              alt={title}
+                              className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                            />
+                            {hasPDF && (
+                              <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full flex items-center space-x-1 shadow-lg">
+                                <FileText size={16} />
+                                <span className="text-xs font-semibold">PDF</span>
+                              </div>
+                            )}
+                          </div>
+                        ) : hasPDF ? (
+                          // Icône PDF si pas d'image de couverture
+                          <div 
+                            className="h-full flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gradient-to-br hover:from-blue-100 hover:to-gray-200 transition-colors"
+                            onClick={() => {
+                              if (article.pdf_url) {
+                                setPdfUrl(article.pdf_url);
+                                setPdfTitle(title);
+                                setShowPDFViewer(true);
+                              }
+                            }}
+                          >
+                            <FileText size={64} className="text-red-600 mb-4" />
+                            <p className="text-sm font-semibold text-gray-700 mb-3">
+                              Document PDF
+                            </p>
+                            <button
+                              className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                            >
+                              <FileText size={18} />
+                              <span className="text-sm">Prévisualiser</span>
+                            </button>
+                          </div>
+                        ) : (
+                          // Placeholder si ni image ni PDF
+                          <div className="h-full flex items-center justify-center bg-gray-200">
+                            <ImageIcon size={48} className="text-gray-400" />
+                          </div>
+                        )}
+                      </div>
+                      
                       <div className="p-6">
                         <div className="flex items-center space-x-3 mb-3">
                           <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
@@ -249,19 +325,27 @@ export default function News() {
                           </span>
                           <span className="flex items-center text-xs text-gray-500">
                             <Calendar size={14} className="mr-1" />
-                            {new Date(article.published_at).toLocaleDateString(
-                              i18n.language === 'en' ? 'en-US' : 'fr-FR'
-                            )}
+                            {new Date(article.created_at).toLocaleDateString()}
                           </span>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                        
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                           {title}
                         </h3>
-                        <p className="text-gray-600 mb-4 line-clamp-3">
+                        
+                        <p className="text-gray-600 text-sm line-clamp-3 mb-4">
                           {excerpt}
                         </p>
-                        <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                          {t('news.readMore')} →
+                        
+                        <button 
+                          onClick={() => {
+                            setSelectedArticle(article);
+                            setShowArticleModal(true);
+                          }}
+                          className="text-blue-600 hover:text-blue-800 font-semibold text-sm flex items-center transition-colors"
+                        >
+                          {t('news.readMore')}
+                          <span className="ml-2">→</span>
                         </button>
                       </div>
                     </div>
@@ -286,14 +370,12 @@ export default function News() {
               </p>
             </div>
 
-            {/* Liste des albums */}
             {loadingAlbums ? (
               <div className="text-center py-12">
                 <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
               </div>
             ) : albums.length === 0 ? (
               <div className="text-center py-12 text-gray-600">
-                <ImageIcon size={64} className="mx-auto mb-4 text-gray-400" />
                 <p className="text-lg">{t('news.gallery.noAlbums')}</p>
               </div>
             ) : (
@@ -305,57 +387,44 @@ export default function News() {
                   return (
                     <div
                       key={album.id}
-                      onClick={() => openAlbum(album.id)}
-                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer group"
+                      onClick={() => openAlbumLightbox(album.id)}
+                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer"
                     >
-                      {/* Image de couverture */}
-                      <div className="relative h-64 overflow-hidden bg-gray-200">
-                        {album.cover_image_url ? (
+                      {album.cover_image_url && (
+                        <div className="relative h-56 overflow-hidden">
                           <img
                             src={album.cover_image_url}
                             alt={title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                           />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <ImageIcon size={64} className="text-gray-400" />
+                          <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center space-x-1">
+                            <ImageIcon size={16} />
+                            <span>{album.photo_count}</span>
                           </div>
-                        )}
-                        
-                        {/* Badge nombre de photos */}
-                        <div className="absolute top-4 right-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                          {album.photo_count || 0} {t('news.gallery.photos')}
                         </div>
-                      </div>
-
-                      {/* Informations */}
+                      )}
+                      
                       <div className="p-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2 line-clamp-2">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
                           {title}
                         </h3>
                         
-                        <div className="flex items-center space-x-4 mb-3 text-sm text-gray-600">
-                          <span className="flex items-center">
-                            <Calendar size={16} className="mr-1" />
-                            {new Date(album.event_date).toLocaleDateString(
-                              i18n.language === 'en' ? 'en-US' : 'fr-FR'
-                            )}
-                          </span>
-                          <span className="flex items-center">
-                            <MapPin size={16} className="mr-1" />
-                            {album.location}
-                          </span>
-                        </div>
-
                         {description && (
-                          <p className="text-gray-600 line-clamp-2 mb-4">
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                             {description}
                           </p>
                         )}
-
-                        <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                          {t('news.gallery.viewPhotos')} →
-                        </button>
+                        
+                        <div className="flex items-center justify-between text-sm text-gray-500">
+                          <span className="flex items-center">
+                            <Calendar size={14} className="mr-1" />
+                            {new Date(album.event_date).toLocaleDateString()}
+                          </span>
+                          <span className="flex items-center">
+                            <MapPin size={14} className="mr-1" />
+                            {album.location}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   );
@@ -367,15 +436,39 @@ export default function News() {
       )}
 
       {/* Lightbox */}
-      {showLightbox && lightboxPhotos.length > 0 && (
+      {showLightbox && (
         <PhotoLightbox
           photos={lightboxPhotos}
           currentIndex={lightboxIndex}
           onClose={() => setShowLightbox(false)}
           onNavigate={setLightboxIndex}
-          language={i18n.language}
         />
       )}
+
+      {/* PDF Viewer */}
+      {showPDFViewer && pdfUrl && (
+        <PDFViewer
+          pdfUrl={pdfUrl}
+          title={pdfTitle}
+          onClose={() => setShowPDFViewer(false)}
+        />
+      )}
+
+      {/* Article Modal */}
+      <ArticleModal
+        article={selectedArticle}
+        isOpen={showArticleModal}
+        onClose={() => {
+          setShowArticleModal(false);
+          setSelectedArticle(null);
+        }}
+        onOpenPDF={(url, title) => {
+          setPdfUrl(url);
+          setPdfTitle(title);
+          setShowPDFViewer(true);
+          setShowArticleModal(false);
+        }}
+      />
     </div>
   );
 }
