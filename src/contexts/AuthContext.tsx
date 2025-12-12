@@ -11,7 +11,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<User>; // <-- retourne le user
   signOut: () => Promise<void>;
 }
 
@@ -22,35 +22,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    checkUser();
+    void checkUser();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(() => {
-      (async () => {
-        await checkUser();
-      })();
+      void checkUser();
     });
 
     return () => {
       authListener.subscription.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const fetchProfileByAuthId = async (authUserId: string) => {
+    const { data: userData, error } = await supabase
+      .from('users')
+      .select('id,email,role,name')
+      .eq('id', authUserId)
+      .maybeSingle();
+
+    if (error) throw error;
+    return userData as User | null;
+  };
+
   const checkUser = async () => {
+    setLoading(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) throw sessionError;
 
-      if (session?.user) {
-        const { data: userData, error } = await supabase
-          .from('users')
-          .select('*')
-          .eq('email', session.user.email)
-          .maybeSingle();
-
-        if (error) throw error;
-        setUser(userData);
-      } else {
+      if (!session?.user) {
         setUser(null);
+        return;
       }
+
+      const authUserId = session.user.id;
+
+      // ✅ Récupérer le profil par ID (robuste)
+      const profile = await fetchProfileByAuthId(authUserId);
+
+      // Si pas de profil dans public.users, on considère non connecté côté app
+      if (!profile) {
+        console.warn('No profile found in public.users for auth user id:', authUserId);
+        setUser(null);
+        return;
+      }
+
+      setUser(profile);
     } catch (error) {
       console.error('Error checking user:', error);
       setUser(null);
@@ -60,13 +78,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) throw error;
-    await checkUser();
+
+    const authUserId = data.user?.id;
+    if (!authUserId) {
+      // cas anormal : on sécurise
+      await supabase.auth.signOut();
+      throw new Error('No auth user id returned by Supabase.');
+    }
+
+    const profile = await fetchProfileByAuthId(authUserId);
+
+    if (!profile) {
+      // Auth OK mais pas de profil => on coupe
+      await supabase.auth.signOut();
+      throw new Error("Profil utilisateur introuvable dans public.users (table 'users').");
+    }
+
+    // Optionnel : si tu veux que signIn serve uniquement pour l’admin
+    //Décommente si tu veux forcer admin ici :
+    if (profile.role !== 'admin') {
+      await supabase.auth.signOut();
+      throw new Error("Accès refusé : vous n'êtes pas administrateur.");
+    }
+
+    setUser(profile);
+    return profile;
   };
 
   const signOut = async () => {

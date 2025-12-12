@@ -18,18 +18,35 @@ export default function AdminLogin() {
     setError('');
 
     try {
-      console.log('Tentative de connexion avec:', email.trim());
-      await signIn(email.trim(), password);
+      const cleanEmail = email.trim();
+      console.log('Tentative de connexion avec:', cleanEmail);
+
+      await signIn(cleanEmail, password);
+
+      // ✅ Bloque l'accès si pas admin
+      // if (!profile || profile.role !== 'admin') {
+      //   setError("Accès refusé : vous n'êtes pas administrateur.");
+      //   return;
+      // }
+
       navigate('/admin/dashboard');
     } catch (err: any) {
       console.error('Erreur de connexion:', err);
 
       let errorMessage = 'Email ou mot de passe incorrect';
 
-      if (err.message?.includes('Invalid login credentials')) {
-        errorMessage = 'Email ou mot de passe incorrect. Vérifiez que l\'utilisateur a été créé dans Supabase Auth et que l\'email est confirmé.';
-      } else if (err.message?.includes('Email not confirmed')) {
-        errorMessage = 'L\'email n\'a pas été confirmé. Veuillez confirmer votre email ou activer "Auto Confirm User" dans Supabase.';
+      if (err?.message?.includes('Invalid login credentials')) {
+        errorMessage =
+          "Email ou mot de passe incorrect. Vérifiez que l'utilisateur a été créé dans Supabase Auth et que l'email est confirmé.";
+      } else if (err?.message?.includes('Email not confirmed')) {
+        errorMessage =
+          "L'email n'a pas été confirmé. Veuillez confirmer votre email ou activer \"Auto Confirm User\" dans Supabase.";
+      } else if (err?.message?.includes('Profil utilisateur introuvable')) {
+        // si tu gardes ce message dans AuthContext corrigé
+        errorMessage =
+          "Connexion réussie côté Auth, mais profil introuvable dans la table public.users. Vérifie que l'utilisateur existe dans public.users avec le même id que dans Auth.";
+      } else if (err?.message?.includes("Accès refusé")) {
+        errorMessage = err.message;
       }
 
       setError(errorMessage);
