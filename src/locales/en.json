@@ -38,6 +38,38 @@
   "biography": {
     "title": "Biography & Journey",
     "subtitle": "An exceptional path in service to the nation",
+    "introTitle": "A trajectory of excellence in service to the Nation",
+    "intro1": "Born in the Central African Republic, Dr Serge Ghislain Djorie embodies a new generation of African leaders: competent, committed and resolutely focused on the future.",
+    "intro1Bold": "competent, committed and resolutely focused on the future",
+    "intro2": "His unique trajectory combines academic excellence, military service, government experience and political commitment to the renewal of the Central African Republic.",
+    "intro2Academic": "academic excellence",
+    "intro2Military": "military service",
+    "intro2Government": "government experience",
+    "intro2Political": "political commitment",
+    "intro3": "Official candidate for the presidential election of December 28, 2025, he carries a modern Pan-Africanist vision and an ambitious social project to build a dignified, stable and sovereign Central African Republic.",
+    "intro3Date": "December 28, 2025",
+    "parcours": {
+      "title": "An Exceptional Journey",
+      "subtitle": "Four major stages that define Dr Djorie's experience and vision"
+    },
+    "qualities": {
+      "academic": {
+        "title": "Academic Excellence",
+        "description": "Doctor of Science, recognized researcher"
+      },
+      "government": {
+        "title": "Government Experience",
+        "description": "Minister and public policy expert"
+      },
+      "panafrican": {
+        "title": "Pan-African Vision",
+        "description": "Leader focused on Africa's future"
+      },
+      "citizen": {
+        "title": "Citizen Commitment",
+        "description": "Dedicated to serving the nation"
+      }
+    },
     "researcher": {
       "title": "Medical researcher",
       "description": "Recognized expert in the medical field with significant contribution to scientific research."
@@ -53,6 +85,12 @@
     "president": {
       "title": "President of CAPNCA",
       "description": "Founder and leader of the Collective for Political Alternation for a New Central African Republic."
+    },
+    "cta": {
+      "title": "A Leader Ready to Serve",
+      "description": "Discover Dr Serge Ghislain Djorie's vision and complete program to transform the Central African Republic",
+      "visionButton": "Discover the Vision",
+      "programButton": "View the Program"
     }
   },
   "vision": {

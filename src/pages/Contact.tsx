@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Facebook, Twitter, Youtube, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Facebook, X } from 'lucide-react';
+import { FaWhatsapp } from "react-icons/fa";
+
 import { supabase } from '../lib/supabase';
 
 export default function Contact() {
@@ -48,15 +50,16 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: Mail, label: t('contact.info.email'), value: 'contact@sergedjorie.com' },
-    { icon: Phone, label: t('contact.info.phone'), value: '+236 XX XX XX XX' },
+    { icon: Mail, label: t('contact.info.email'), value: 'djorie2000@yahoo.fr' },
+    { icon: Phone, label: t('contact.info.phone'), value: '(+236) 75181883' },
+    { icon: FaWhatsapp, label: t('WhatsApp'), value: '(+236) 72407489' },
     { icon: MapPin, label: t('contact.info.address'), value: 'Bangui, République Centrafricaine' },
   ];
 
   const socialLinks = [
-    { icon: Facebook, label: 'Facebook', href: '#', color: 'hover:text-blue-600' },
-    { icon: Twitter, label: 'Twitter', href: '#', color: 'hover:text-blue-400' },
-    { icon: Youtube, label: 'YouTube', href: '#', color: 'hover:text-red-600' },
+    { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/serge.djorie', color: 'hover:text-blue-600' },
+    { icon: X, label: 'X ex Twitter', href: 'https://x.com/sergedjorie?s=11', color: 'hover:text-blue-400' },
+    // { icon: Youtube, label: 'YouTube', href: '#', color: 'hover:text-red-600' },
   ];
 
   return (

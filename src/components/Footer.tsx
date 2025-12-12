@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, X, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -15,9 +15,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Facebook, href: 'https://www.facebook.com/serge.djorie', label: 'Facebook' },
+    { icon: X, href: 'https://x.com/sergedjorie?s=11', label: 'X ex Twitter' },
+    // { icon: Youtube, href: '#', label: 'YouTube' },
   ];
 
   return (
@@ -76,11 +76,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-blue-100">
                 <Mail size={18} className="mt-0.5 flex-shrink-0" />
-                <span>contact@sergedjorie.com</span>
+                <span>djorie2000@yahoo.fr</span>
               </li>
               <li className="flex items-start space-x-2 text-sm text-blue-100">
                 <Phone size={18} className="mt-0.5 flex-shrink-0" />
-                <span>+236 XX XX XX XX</span>
+                <span>(+236) 75 18 18 83</span>
               </li>
               <li className="flex items-start space-x-2 text-sm text-blue-100">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0" />

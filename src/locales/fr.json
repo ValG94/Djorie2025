@@ -38,6 +38,38 @@
   "biography": {
     "title": "Biographie & Trajectoire",
     "subtitle": "Un parcours exceptionnel au service de la nation",
+    "introTitle": "Une trajectoire d'excellence au service de la Nation",
+    "intro1": "Né en République Centrafricaine, le Dr Serge Ghislain Djorie incarne une nouvelle génération de leaders africains : compétents, engagés et résolument tournés vers l'avenir.",
+    "intro1Bold": "compétents, engagés et résolument tournés vers l'avenir",
+    "intro2": "Sa trajectoire unique combine excellence académique, service militaire, expérience gouvernementale et engagement politique pour le renouveau de la Centrafrique.",
+    "intro2Academic": "excellence académique",
+    "intro2Military": "service militaire",
+    "intro2Government": "expérience gouvernementale",
+    "intro2Political": "engagement politique",
+    "intro3": "Candidat officiel à l'élection présidentielle du 28 décembre 2025, il porte une vision panafricaniste moderne et un projet de société ambitieux pour bâtir une Centrafrique digne, stable et souveraine.",
+    "intro3Date": "28 décembre 2025",
+    "parcours": {
+      "title": "Un Parcours d'Exception",
+      "subtitle": "Quatre étapes majeures qui définissent l'expérience et la vision du Dr Djorie"
+    },
+    "qualities": {
+      "academic": {
+        "title": "Excellence Académique",
+        "description": "Docteur en sciences, chercheur reconnu"
+      },
+      "government": {
+        "title": "Expérience Gouvernementale",
+        "description": "Ministre et expert en politiques publiques"
+      },
+      "panafrican": {
+        "title": "Vision Panafricaine",
+        "description": "Leader tourné vers l'avenir de l'Afrique"
+      },
+      "citizen": {
+        "title": "Engagement Citoyen",
+        "description": "Dédié au service de la nation"
+      }
+    },
     "researcher": {
       "title": "Chercheur en médecine",
       "description": "Expert reconnu dans le domaine médical avec une contribution significative à la recherche scientifique."
@@ -53,6 +85,12 @@
     "president": {
       "title": "Président du CAPNCA",
       "description": "Fondateur et leader du Collectif pour l'Alternance Politique pour une Nouvelle Centrafrique."
+    },
+    "cta": {
+      "title": "Un Leader Prêt à Servir",
+      "description": "Découvrez la vision et le programme complet du Dr Serge Ghislain Djorie pour transformer la République Centrafricaine",
+      "visionButton": "Découvrir la Vision",
+      "programButton": "Voir le Programme"
     }
   },
   "vision": {
